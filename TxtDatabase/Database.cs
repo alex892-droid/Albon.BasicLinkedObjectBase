@@ -62,7 +62,7 @@ namespace TxtDatabase
 
             foreach (var line in lines)
             {
-                var deserializedObject = JsonConvert.DeserializeObject<T>(line);
+                var deserializedObject = JsonConvert.DeserializeObject<T>(line.Split(';')[1]);
                 if (deserializedObject != null)
                 {
                     table.Add(deserializedObject);
