@@ -1,6 +1,6 @@
 # TxtDatabase
 
-TxtDatabase is a local text file database in C#, very easy to use for fast project implementation.
+TxtDatabase is a local text file database project in C# using Newtonsoft.Json package, very easy to use for fast project implementation.
 It saves/deletes/updates/search for any instance of classes you want in files (tables equivalent) automatically and dynamically without any big configuration required.
 
 HOW TO USE:
