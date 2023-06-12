@@ -5,7 +5,7 @@ It saves/deletes/updates/search for any instance of classes you want in files (t
 
 HOW TO USE:
 1) Add the TxtDatabase project to your solution.
-2) Choose or create a new attribute that the database will use to know the unique key property of your instances of classes and put that attribute to the property in the class you want to save.
+2) Choose or create a new attribute that the database will use to know the unique key property of your instances of classes and put that attribute on the property in the class you want to be saveable.
 
 Change the attribute in DatabaseService file:
 ``` C#
