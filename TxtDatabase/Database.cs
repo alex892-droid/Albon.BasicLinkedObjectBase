@@ -6,7 +6,8 @@ namespace TxtDatabase
     {
     }
 
-    public class DatabaseService<TAttribute> where TAttribute : Attribute
+    public class DatabaseService<TAttribute> 
+        where TAttribute : Attribute
     {
         public string DatabaseFolder { get; set; }
 
@@ -22,7 +23,7 @@ namespace TxtDatabase
 
             string[] lines = File.ReadAllLines(filePath);
             var serializedObject = JsonConvert.SerializeObject(obj);
-            var line = $"{Accessor<T, TAttribute>.ReadIDValue};{serializedObject}";
+            var line = $"{Accessor<T, TAttribute>.ReadIDValue(obj)};{serializedObject}";
             var linesList = lines.ToList();
             linesList.Add(line);
             lines = linesList.ToArray();
