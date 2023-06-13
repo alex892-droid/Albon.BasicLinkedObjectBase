@@ -1,6 +1,6 @@
-# TxtDatabase
+# Basic Linked Object Base
 
-TxtDatabase is an object database project in C# using Newtonsoft.Json package, very easy to use for fast project implementation.
+Basic Linked Object Base is an object database project in C# using Newtonsoft.Json package, very easy to use for fast project implementation.
 It saves/deletes/updates/searches for any instance of classes you want in files (tables equivalent) automatically and dynamically without any big configuration required.
 
 HOW TO USE:
