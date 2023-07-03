@@ -7,19 +7,19 @@ using System.Runtime.CompilerServices;
 
 namespace BasicLinkedObjectBase
 {
-    public class ObjectBaseService : DatabaseService<KeyAttribute>, IObjectBaseService
+    public class ObjectBaseService : ObjectBaseService<KeyAttribute>, IObjectBaseService
     {
     }
 
-    public class DatabaseService<TAttribute>
+    public class ObjectBaseService<TAttribute> : IObjectBaseService
         where TAttribute : Attribute
     {
-        public string DatabaseFolder { get; set; }
+        public string ObjectBaseFolder { get; set; }
 
-        public DatabaseService()
+        public ObjectBaseService()
         {
-            DatabaseFolder = $"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}\\DatabaseService";
-            System.IO.Directory.CreateDirectory($"{DatabaseFolder}");
+            ObjectBaseFolder = $"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}\\DatabaseService";
+            System.IO.Directory.CreateDirectory($"{ObjectBaseFolder}");
         }
 
         public void Add<T>(T obj)
@@ -119,7 +119,7 @@ namespace BasicLinkedObjectBase
 
         private string GetFilePath<T>()
         {
-            var filePath = $"{DatabaseFolder}\\{ObjectBaseMapper<T>.PartitionName}";
+            var filePath = $"{ObjectBaseFolder}\\{ObjectBaseMapper<T>.PartitionName}";
 
             Console.WriteLine(filePath);
             if (!File.Exists(filePath))

@@ -4,6 +4,14 @@
     <TargetFramework>net7.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <Title>Albon.BasicLinkedObjectBase</Title>
+    <Description>Basic Linked Object Base is an object database project in C#, very easy to use for fast project implementation. It saves/deletes/updates/searches for any instance of classes you want in files partitions automatically and dynamically without any big configuration required.</Description>
+    <Copyright>MIT</Copyright>
+    <PackageProjectUrl>https://github.com/alex892-droid/Albon.BasicLinkedObjectBase</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/alex892-droid/Albon.BasicLinkedObjectBase</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>database; object-oriented database; object; nosql;</PackageTags>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>
