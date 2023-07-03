@@ -11,6 +11,17 @@ namespace TxtDatabase
     internal static class Accessor<T, TAttribute> where TAttribute : Attribute
     {
         static private readonly ParameterExpression instance = Expression.Parameter(typeof(T));
-        static public readonly Func<T, string> ReadIDValue = Expression.Lambda<Func<T, string>>(Expression.Property(instance, typeof(T).GetProperties().Single(p => p.GetCustomAttribute<TAttribute>() != null)), instance).Compile();
+        static public readonly Func<T, string> ReadIDValue = Expression.Lambda<Func<T, string>>(GetExpressionGetPropertyID(), instance).Compile();
+
+        private static Expression GetExpressionGetPropertyID()
+        {
+            var propertyId = typeof(T).GetProperties().FirstOrDefault(p => p.GetCustomAttribute<TAttribute>() != null);
+
+            if (propertyId == null) //No ID property found.
+            {
+                return Expression.Constant(string.Empty);
+            }
+            return Expression.Property(instance, propertyId);
+        }
     }
 }
