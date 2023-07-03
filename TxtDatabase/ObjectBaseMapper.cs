@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TxtDatabase
+namespace BasicLinkedObjectBase
 {
-    internal static class DatabaseMapper<T>
+    internal static class ObjectBaseMapper<T>
     {
-        static public readonly string TableName = "T_" + typeof(T).Name.ToUpper();
+        static public readonly string PartitionName = typeof(T).Name.ToUpper();
         static public string[] Columns = typeof(T).GetProperties().Select(p => p.Name.ToUpper()).ToArray();
     }
 }

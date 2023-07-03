@@ -6,7 +6,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TxtDatabase
+namespace BasicLinkedObjectBase
 {
     internal static class Accessor<T, TAttribute> where TAttribute : Attribute
     {

@@ -1,12 +1,17 @@
 ﻿using Newtonsoft.Json;
+using System.ComponentModel.DataAnnotations;
+using System.Diagnostics.Metrics;
+using System.Linq.Expressions;
+using System.Reflection;
+using System.Runtime.CompilerServices;
 
-namespace TxtDatabase
+namespace BasicLinkedObjectBase
 {
-    public class DatabaseService : DatabaseService<Attribute>, IDatabaseService //Change Attribute class to decide which attribute to put on members for the key of database lines
+    public class ObjectBaseService : DatabaseService<KeyAttribute>, IObjectBaseService
     {
     }
 
-    public class DatabaseService<TAttribute> 
+    public class DatabaseService<TAttribute>
         where TAttribute : Attribute
     {
         public string DatabaseFolder { get; set; }
@@ -93,9 +98,28 @@ namespace TxtDatabase
             File.WriteAllLines(filePath, linesList.ToArray());
         }
 
+        public void Delete<T>(string id)
+        {
+            var filePath = GetFilePath<T>();
+
+            string[] lines = File.ReadAllLines(filePath);
+            List<string> linesList = lines.ToList();
+
+            foreach (string line in lines)
+            {
+                if (line.Split(';')[0] == id)
+                {
+                    linesList.Remove(line);
+                    break;
+                }
+            }
+
+            File.WriteAllLines(filePath, linesList.ToArray());
+        }
+
         private string GetFilePath<T>()
         {
-            var filePath = $"{DatabaseFolder}\\{DatabaseMapper<T>.TableName}";
+            var filePath = $"{DatabaseFolder}\\{ObjectBaseMapper<T>.PartitionName}";
 
             Console.WriteLine(filePath);
             if (!File.Exists(filePath))
@@ -106,5 +130,4 @@ namespace TxtDatabase
             return filePath;
         }
     }
-
 }

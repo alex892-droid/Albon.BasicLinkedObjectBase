@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TxtDatabase
+namespace BasicLinkedObjectBase
 {
-    public interface IDatabaseService
+    public interface IObjectBaseService
     {
         public void Add<T>(T obj);
 
@@ -16,5 +16,7 @@ namespace TxtDatabase
         public List<T> Query<T>();
 
         public void Delete<T>(T obj);
+
+        public void Delete<T>(string id);
     }
 }
